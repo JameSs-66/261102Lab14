@@ -17,3 +17,35 @@ int main(){
     cout << "\nMin = " << B[5];
     return 0;
 }
+
+void stat(const double numArray[],int dataN,double results[]){
+    double sumOfOneDivA = 0, multiplyA = 1, sumA = 0, sumA2 = 0, min = numArray[0],max = numArray[0];
+    for(int i = 0; i < dataN; i++){
+        sumA += numArray[i];
+    }
+   
+    for(int j = 0; j < dataN; j++){
+        sumA2 += pow(numArray[j], 2);
+    }
+
+    for(int k = 0; k < dataN; k++){
+        multiplyA *= numArray[k];
+    }
+
+    for(int g = 0; g < dataN; g++){
+        sumOfOneDivA += 1.0/numArray[g];
+    }
+    
+    results[0] = sumA / dataN;
+    results[1] = sqrt(((1.0/dataN)*sumA2) - pow((sumA/dataN),2.0));
+    results[2] = pow(multiplyA, 1.0/dataN);
+    results[3] = dataN/sumOfOneDivA;
+
+    for(int f = 0; f < dataN; f++){
+        if(numArray[f] > max) max = numArray[f];
+        if(numArray[f] < min) min = numArray[f];
+    }
+
+    results[4] = max;
+    results[5] = min;
+}
